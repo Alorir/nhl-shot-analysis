@@ -1,6 +1,6 @@
 # Design Decisions
 
-This document explains the main modeling and processing decisions made during the NHL analytics warehouse project.
+This document explains the main modeling and processing decisions made during the NHL analytics database project.
 
 ---
 
@@ -39,7 +39,7 @@ Player height appeared in different formats across sources.
 
 The original reference data stored height as text, while NHL API records provided height as inches.
 
-All player heights were standardized into ```text height_in```.
+All player heights were standardized into ```height_in```.
 
 This makes the field easier to query, compare, and use in Power BI.
 
@@ -128,13 +128,13 @@ Reason:
 
 Potential future table:
 
-```text fact_line_game_performance ```
+``` fact_line_game_performance ```
 
 ## 11. Prefer Detailed Game-Level Tables Over Season Aggregates
 
 Some season-level tables were reviewed and found to contain metrics that can be reproduced from more detailed game-level tables.
 
-For example, ```text season_goalies ``` was not selected as a primary modeling table because the game-level goalie dataset provides finer granularity and can be aggregated to season level when needed.
+For example, ```season_goalies ``` was not selected as a primary modeling table because the game-level goalie dataset provides finer granularity and can be aggregated to season level when needed.
 
 ## 12. Keep the Model Focused but Extendable
 
