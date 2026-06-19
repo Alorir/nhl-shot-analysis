@@ -125,13 +125,12 @@ These records include:
 These records were retained and documented rather than silently removed.
 
 ## 7. Validation Summary
-```text
-Validation check	Result
-Duplicate player IDs	Passed
-Missing player IDs	Passed
-Missing shooter references	Passed
-Missing goalie references	Passed
-Shot event natural key	Passed
-Team game performance key	Passed
-Placeholder shot records	Documented
-```
+| Validation Check | Result |
+| :--------------- | :----- |
+| Duplicate player IDs | ✅ Passed |
+| Missing player IDs | ✅ Passed |
+| Missing shooter references | ✅ Passed |
+| Missing goalie references | ✅ Passed |
+| Shot event natural key | ✅ Passed |
+| Team game performance key | ✅ Passed |
+| Placeholder shot records | ⚠️ Documented |
