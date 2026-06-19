@@ -16,7 +16,7 @@ raw/source tables
 → dimension and fact views
 → analysis queries
 → Power BI
-
+```
 ## 2. Preserve Source Data Where Possible
 
 Raw imported data is kept as close to the original source as practical.
