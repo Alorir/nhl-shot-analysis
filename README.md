@@ -98,26 +98,31 @@ Each fact table has a clearly defined grain and validated logical primary key.
 
 ## Repository Structure
 
-sql/
+```text
+nhl-shot-analysis/
 │
-├── 01_data_cleaning.sql
-├── 02_dimensions.sql
-├── 03_fact_tables.sql
-└── 04_validation.sql
-
-docs/
+├── README.md
+├── .gitignore
 │
-├── data_cleaning.md
-├── data_validation_report.md
-├── design_decisions.md
-└── dimensional_model.md
-
-python/
-
-powerbi/
-
-images/
-
+├── sql/
+│   ├── 01_data_cleaning.sql
+│   ├── 02_dimensions.sql
+│   ├── 03_fact_tables.sql
+│   └── 04_validation.sql
+│
+├── docs/
+│   ├── data_cleaning.md
+│   ├── data_validation_report.md
+│   ├── design_decisions.md
+│   ├── dimensional_model.md
+│   └── project_log.md
+│
+├── python/
+│
+├── powerbi/
+│
+└── images/
+```
 
 ## Planned Dashboard
 
