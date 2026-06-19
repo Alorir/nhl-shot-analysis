@@ -120,7 +120,7 @@ These records include:
 
 - shooter_player_id = 0
 - missing shooter name
-- laceholder-like values such as 0 or 999
+- placeholder-like values such as 0 or 999
 
 These records were retained and documented rather than silently removed.
 
