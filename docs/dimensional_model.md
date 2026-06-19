@@ -27,8 +27,7 @@ Core fact views:
 
 **Logical key:**
 
-```text
-player_id
+```player_id```
 
 Purpose: stores descriptive player attributes such as name, birth date, nationality, height, weight, position, and shooting/catching hand.
 
