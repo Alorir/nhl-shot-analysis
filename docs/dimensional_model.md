@@ -75,7 +75,7 @@ Foreign keys:
 
 **Logical key:**
 
-season + game_id + team_code + situation
+`season + game_id + team_code + situation`
 
 **Foreign keys:**
 

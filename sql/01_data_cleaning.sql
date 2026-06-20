@@ -25,6 +25,23 @@ opposing_team = CASE
 END;
 
 
+UPDATE shots_2007_2025
+SET home_team_code = CASE
+    WHEN home_team_code = 'L.A' THEN 'LAK'
+    WHEN home_team_code = 'N.J' THEN 'NJD'
+    WHEN home_team_code = 'S.J' THEN 'SJS'
+    WHEN home_team_code = 'T.B' THEN 'TBL'
+    ELSE home_team_code
+END,
+away_team_code = CASE
+    WHEN away_team_code = 'L.A' THEN 'LAK'
+    WHEN away_team_code = 'N.J' THEN 'NJD'
+    WHEN away_team_code = 'S.J' THEN 'SJS'
+    WHEN away_team_code = 'T.B' THEN 'TBL'
+    ELSE away_team_code
+END;
+
+
 -- ============================================================
 -- 2. Convert player height from text to inches
 -- ============================================================
