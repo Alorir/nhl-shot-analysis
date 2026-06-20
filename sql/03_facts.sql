@@ -73,7 +73,7 @@ SELECT
 	average_rest_difference
 FROM shots_2007_2025;
 
--- team_performance  fact table
+-- fact_team_game_performance
 
 CREATE OR REPLACE VIEW fact_team_game_performance AS
 SELECT 
@@ -112,16 +112,7 @@ SELECT
 FROM team_game_stats ;
 
 
---3 goalies
-SELECT
-    season,
-    game_id,
-    player_id,
-    situation,
-    COUNT(*) AS row_count
-FROM games_goalies_2008_2025
-GROUP BY season, game_id, player_id, situation
-HAVING COUNT(*) > 1;
+--3 fact_goalie_game_performance
 
 CREATE OR REPLACE VIEW fact_goalie_game_performance AS
 SELECT
@@ -165,7 +156,7 @@ SELECT
 FROM games_goalies_2008_2025;
 
 
--- 4. skaters
+-- 4. fact_skater_game_performance
  
 CREATE OR REPLACE VIEW fact_skater_game_performance AS
 SELECT
