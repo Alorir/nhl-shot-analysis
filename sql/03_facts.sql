@@ -1,13 +1,15 @@
 -- ============================================================
--- 02_facts.sql
+-- 03_facts.sql
 -- Creates fact table view for the NHL shot analysis project.
 -- ============================================================
 -- fact_shot_events
 
 CREATE OR REPLACE VIEW fact_shot_events AS
 SELECT
+    (    season::text ||
+    LPAD(game_id::text, 6, '0')
+	)::BIGINT AS game_id,
     season::int AS season,
-    game_id::int AS game_id,
     shot_id::int AS shot_id,
     shooter_player_id::int AS shooter_player_id,
     goalie_id_for_shot::int AS goalie_id_for_shot,
@@ -78,8 +80,8 @@ FROM shots_2007_2025;
 CREATE OR REPLACE VIEW fact_team_game_performance AS
 SELECT 
 	season::int AS season,
-    game_id::int AS game_id,
-    game_date::int AS game_date,
+    game_id::BIGINT,
+    TO_DATE(game_date::text, 'YYYYMMDD') AS game_date,
     player_team AS team_code,
     opposing_team AS opposing_team_code,
     home_or_away,
@@ -117,11 +119,11 @@ FROM team_game_stats ;
 CREATE OR REPLACE VIEW fact_goalie_game_performance AS
 SELECT
     season::int AS season,
-    game_id::int AS game_id,
+    game_id::BIGINT,
     player_id::int AS goalie_id,
     player_team AS team_code,
     opposing_team AS opposing_team_code,
-    game_date::int AS game_date,
+    TO_DATE(game_date::text, 'YYYYMMDD') AS game_date,
     home_or_away,
     situation,
     icetime,
@@ -161,12 +163,12 @@ FROM games_goalies_2008_2025;
 CREATE OR REPLACE VIEW fact_skater_game_performance AS
 SELECT
     season::int AS season,
-    game_id::int AS game_id,
+    game_id::BIGINT,
     player_id::int AS player_id,
     player_team AS team_code,
     opposing_team AS opposing_team_code,
     home_or_away,
-    game_date::int AS game_date,
+    TO_DATE(game_date::text, 'YYYYMMDD') AS game_date,
     position,
     situation,
     icetime,

@@ -14,7 +14,7 @@ CREATE OR REPLACE VIEW dim_players AS
 SELECT DISTINCT
     player_id,
     name,
-    birth_date,
+    birth_date::date AS birth_date,
     nationality,
     height_in,
     weight AS weight_lb,
@@ -43,14 +43,40 @@ HAVING COUNT(*) > 1;
 -- Source: team_game_stats
 -- ============================================================
 
-CREATE OR REPLACE VIEW dim_games AS
+CCREATE OR REPLACE VIEW dim_games AS
 SELECT DISTINCT
-    season,
-    game_id,
-    game_date,
-    playoff_game AS is_playoff_game
+    game_id::BIGINT AS game_id,
+    season::INT AS season,
+    TO_DATE(game_date::text, 'YYYYMMDD') AS game_date,
+    playoff_game::INT AS is_playoff_game
 FROM team_game_stats
 WHERE game_id IS NOT NULL;
+
+CREATE OR REPLACE VIEW dim_games AS
+SELECT
+    game_id,
+    MIN(season) AS season,
+    MAX(game_date) AS game_date,
+    MAX(is_playoff_game) AS is_playoff_game
+FROM (
+    SELECT
+        game_id::BIGINT AS game_id,
+        season::INT AS season,
+        TO_DATE(game_date::text, 'YYYYMMDD') AS game_date,
+        playoff_game::INT AS is_playoff_game
+    FROM team_game_stats
+    UNION ALL
+    SELECT
+        (
+            season::text ||
+            LPAD(game_id::text, 6, '0')
+        )::BIGINT AS game_id,
+        season::INT AS season,
+        NULL::DATE AS game_date,
+        is_playoff_game::INT AS is_playoff_game
+    FROM shots_2007_2025
+) g
+GROUP BY game_id;
 
 -- Validation check: season + game_id should be unique in dim_games
 
